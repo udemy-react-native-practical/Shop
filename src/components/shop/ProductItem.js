@@ -1,8 +1,9 @@
 import React from 'react'
-import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native'
+import {View, Text, Image, StyleSheet, Button, TouchableOpacity} from 'react-native'
 import Colors from '../../constants/Colors'
+import { useRoute } from '@react-navigation/native';
 
-const ProductItem = props => {
+const ProductItem = (props) => {
     return (
         <View style={styles.product}>
             <View style={styles.imageContainer}>
@@ -13,16 +14,8 @@ const ProductItem = props => {
                 <Text style={styles.price}>${props.price.toFixed(2)}</Text>
             </View>
             <View style={styles.actions}>
-                <TouchableOpacity
-                    onPress={props.onViewDetail}
-                >
-                    <Text>View Details</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    onPress={props.onAddToCard}
-                >
-                    <Text>To Cart</Text>
-                </TouchableOpacity>
+                <Button color={Colors.primary} title="View Details" onPress={props.onViewDetail}></Button>
+                <Button color={Colors.primary} title="To Cart" onPress={props.onAddToCard}></Button>
             </View>
         </View>
     )

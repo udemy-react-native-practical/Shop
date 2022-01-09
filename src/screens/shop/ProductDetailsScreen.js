@@ -7,11 +7,17 @@ import {
     Button,
     StyleSheet
 } from 'react-native'
+import {useSelector} from 'react-redux'
 
-const ProductDetailsScreen = () => {
+const ProductDetailsScreen = props => {
+    //const productId = props.navigation.getParam('productId'); //nav v5
+    const {productId, productTitle} = props.route.params;
+    const selectedProduct = useSelector(state => state.products.availableProducts.find(prod => prod.id === productId));
+    props.navigation.setOptions({ title: productTitle })
+
     return (
         <View>
-            <Text>Details</Text>
+            <Text>{selectedProduct.title}</Text>
         </View>
     )
 }
